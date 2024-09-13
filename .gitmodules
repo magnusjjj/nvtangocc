@@ -1,0 +1,3 @@
+[submodule "AnotherCCLib"]
+	path = AnotherCCLib
+	url = https://github.com/magnusjjj/AnotherCCLib
