@@ -6,6 +6,7 @@
 #include "AnotherCCLib/CCConnector.h"
 #include "NVTangoGlobals.h"
 #include "NVTangoMainThread.h"
+#include "NVTangoRunOnMainThread.h"
 #include <string>
 
 NVTangoMainThread* mainthread;
@@ -50,7 +51,9 @@ void MessageHandler(NVSEMessagingInterface::Message* msg)
 	case NVSEMessagingInterface::kMessage_RenameNewGameName: break;
 	case NVSEMessagingInterface::kMessage_DeferredInit: break;
 	case NVSEMessagingInterface::kMessage_ClearScriptDataCache: break;
-	case NVSEMessagingInterface::kMessage_MainGameLoop: break;
+	case NVSEMessagingInterface::kMessage_MainGameLoop:
+		NVTangoRunOnMainThread::ExecuteList();
+		break;
 	case NVSEMessagingInterface::kMessage_ScriptCompile: break;
 	case NVSEMessagingInterface::kMessage_EventListDestroyed: break;
 	case NVSEMessagingInterface::kMessage_PostQueryPlugins: break;
